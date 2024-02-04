@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-. ~/.bash_profile
-
 SCRIPT_PATH="$(readlink -f "$0")"
 SCRIPT_DIR="$(dirname "$SCRIPT_PATH")"
 echo "Script directory is: $SCRIPT_DIR"
+
+. ~/.bash_profile
 
 TARGET_SCRIPT="$SCRIPT_DIR/speedtest.rb"
 

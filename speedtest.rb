@@ -7,6 +7,8 @@ current_file_path = File.expand_path(__FILE__)
 CURRENT_DIR = File.dirname(current_file_path)
 
 def run_speedtest(server)
+  return if server[0] == '#'
+
   puts "Running Speedtest - #{server}"
   json_result = `speedtest -s #{server} -f json`
   result = JSON.parse(json_result)
@@ -16,8 +18,8 @@ def run_speedtest(server)
     Time.now.utc.iso8601,
     "#{result.dig('server', 'location')} (#{result.dig('server', 'name')})",
     result.dig('ping', 'latency'),
-    (result.dig('download', 'bandwidth') * 8 / 10^7).round(2),
-    (result.dig('upload', 'bandwidth') * 8 / 10^7).round(2),
+    (result.dig('download', 'bandwidth').to_f * 8 / 1_000_000).round(2),
+    (result.dig('upload', 'bandwidth').to_f * 8 / 1_000_000).round(2),
   ]
   line = "#{values.join('|')}\n"
   puts "Result: #{line}"

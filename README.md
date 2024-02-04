@@ -7,7 +7,7 @@ A script for running the Ookla Speedetest via command line and outputting the re
 Install the Ookla Speedtest CLI tool: https://www.speedtest.net/apps/cli
 
 Install the following line in your `/etc/crontab`, replacing <MYUSERACCOUNT> and /path/to:
-*/1 * * * * <MYUSERACCOUNT> /path/to/speedtest-auto/run-speedtest.sh >> ~/cron_log.txt 2>&1
+0 */4 * * * <MYUSERACCOUNT> /path/to/speedtest-auto/run-speedtest.sh >> ~/cron_log.txt 2>&1
 
 ## Running
 
